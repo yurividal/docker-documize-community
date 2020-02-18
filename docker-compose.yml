@@ -1,0 +1,33 @@
+version: "3"
+services:
+  documize:
+    image: rusbaron/documize:latest
+    container_name: documize
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      - DBUSER=MYSQLUSER
+      - DBPASS=MYSQLPASS
+      - DBNAME=documize
+      - DBHOST=documizedb
+      - DBSALT=SALTHERE
+    ports:
+      - "5001:5001"
+    networks:
+      - bridge
+  db:
+    image: percona:latest
+    container_name: documizedb
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
+    environment:
+      - MYSQL_ROOT_PASSWORD=MYSQLROOTPASS
+      - MYSQL_USER=MYSQLUSER
+      - MYSQL_PASSWORD=MYSQLPASS
+      - MYSQL_DATABASE=documize
+    networks:
+      - bridge
+networks:
+  bridge:
+    driver: bridge
