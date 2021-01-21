@@ -13,7 +13,7 @@ RUN apk --update add \
 
 WORKDIR /documize
 
-RUN wget https://github.com/documize/community/releases/download/${DOCUMIZE_VERSION}/documize-community-linux-amd64
+RUN wget https://github.com/documize/community/releases/latest/download/documize-community-linux-amd64
 RUN chmod +x /documize/documize-community-linux-amd64
 EXPOSE 5001
 
