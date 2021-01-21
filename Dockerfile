@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-ARG VERSION
+ARG DOCUMIZE_VERSION=v3.8.2
 
 ENV DBUSER root
 ENV DBPASS password
@@ -13,7 +13,8 @@ RUN apk --update add \
 
 WORKDIR /documize
 
-RUN wget https://github.com/documize/community/releases/download/v3.7.0/documize-community-linux-amd64
+RUN wget https://github.com/documize/community/releases/download/
+${DOCUMIZE_VERSION}/documize-community-linux-amd64
 RUN chmod +x /documize/documize-community-linux-amd64
 EXPOSE 5001
 
