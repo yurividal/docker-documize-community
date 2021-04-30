@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-ARG DOCUMIZE_VERSION=v3.8.2
+ARG DOCUMIZE_VERSION=v3.9.0
 
 ENV DBUSER root
 ENV DBPASS password
